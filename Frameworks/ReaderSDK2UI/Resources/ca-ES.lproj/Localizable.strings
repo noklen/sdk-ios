@@ -1,0 +1,93 @@
+/* The title of button used to dismiss an error. */
+"ReaderSDK2UI_GenericStrings_ErrorDismissButtonTitle" = "Ignora";
+
+/* The prompt displayed to the user when the only available card input method is 'chip'. */
+"ReaderSDK2UI_PayScreen_Prompt_Chip" = "Insereix per pagar";
+
+/* The prompt displayed to the user when the only available card input methods are 'chip' and 'contactless'. */
+"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "Insereix o apropa per pagar";
+
+/* The prompt displayed to the user when there are no readers connected. */
+"ReaderSDK2UI_PayScreen_Prompt_NoReadersConnected" = "Cap lector connectat";
+
+/* The prompt displayed to the user when the only available card input method is 'swipe'. */
+"ReaderSDK2UI_PayScreen_Prompt_Swipe" = "Fes lliscar per pagar";
+
+/* The prompt displayed to the user when the only available card input methods are 'swipe' and 'chip'. */
+"ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip" = "Fes lliscar o insereix per pagar";
+
+/* The prompt displayed to the user when the available card input methods are 'swipe', 'chip', and 'contactless'. */
+"ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip_Contactless" = "Per pagar, fes lliscar, insereix o apropa";
+
+/* The text displayed above the total amount on the Pay screen. */
+"ReaderSDK2UI_PayScreen_TotalAmountHeader" = "TOTAL";
+
+/* Error title message that is presented. */
+"ReaderSDK2UI_PayScreen_alertTitle" = "S’ha produït un error";
+
+/* Error message shown to consumers when they send incorrect payment parmeters. */
+"ReaderSDK2UI_PayScreen_noCardId" = "Estàs intentant crear un pagament amb una targeta desada sense abans haver configurat un valor com a identificador de la targeta. ";
+
+/* Okay button presented to confirm the error alert. */
+"ReaderSDK2UI_PayScreen_okayButton" = "D’acord";
+
+/* The title of the row which displays the battery level of the connected Square reader. */
+"ReaderSDK2UI_ReaderDetail_BatteryRow" = "Bateria";
+
+/* The title of the alert displayed when firmware upgrade fails. */
+"ReaderSDK2UI_ReaderDetail_FirmwareFailedAlertTitle" = "S’ha produït un error en l’actualització del microprogramari";
+
+/* The title of the row which displays the firmware version of the connected Square reader. */
+"ReaderSDK2UI_ReaderDetail_FirmwareRow" = "Microprogramari";
+
+/* The title of the button which, when pressed, forgets the connected Square reader. The reader will need to be paired again before it can be used. */
+"ReaderSDK2UI_ReaderDetail_ForgetReaderButton" = "Desvincula";
+
+/* The title of the table which displays general information about the connected Square reader, including the battery level, firmware version, etc. */
+"ReaderSDK2UI_ReaderDetail_GeneralSection" = "General";
+
+/* The title of the button which, when pressed, identifies the connected Square reader by flashing its LEDs. */
+"ReaderSDK2UI_ReaderDetail_IdentifyReaderButton" = "Identifica aquest lector";
+
+/* The title of the row which displays the current state of the connected Square reader. */
+"ReaderSDK2UI_ReaderDetail_ReaderStateRow" = "Comunitat autònoma ";
+
+/* The title of the button which, when pressed, reconnects it with Square's servers. */
+"ReaderSDK2UI_ReaderDetail_ReconnectReaderButtonTitle" = "Torna a provar la connexió";
+
+/* The title of the row which displays the serial number of the connected Square reader. */
+"ReaderSDK2UI_ReaderDetail_SerialNumberRow" = "Número de sèrie";
+
+/* The title of the row which displays the card input methods which are accepted by the connected Square reader (e.g. swipe, chip, contactless). */
+"ReaderSDK2UI_ReaderDetail_SupportedInputMethodsRow" = "Accepta";
+
+/* The instructions for pairing a bluetooth Square reader. */
+"ReaderSDK2UI_ReaderPairing_BluetoothPairingInstructions" = "Prem i mantingues premut el botó del lector fins que els llums parpellegin en taronja, després deixa anar el botó i col·loca el lector a prop d’aquest dispositiu per emparellar-lo.";
+
+/* The title displayed when a bluetooth reader fails to pair. */
+"ReaderSDK2UI_ReaderPairing_ErrorTitle" = "No s’ha pogut emparellar";
+
+/* The message displayed to the user when the app is looking for bluetooth readers to pair with. */
+"ReaderSDK2UI_ReaderPairing_LookingForReaders" = "Cercant lectors...";
+
+/* The message displayed to the user when the app is in the process of pairing with a reader. */
+"ReaderSDK2UI_ReaderPairing_PairingWithReader" = "Emparellant amb el lector…";
+
+/* The title displayed when pairing a Square reader via bluetooth. */
+"ReaderSDK2UI_ReaderPairing_Title" = "Emparella el lector";
+
+/* The title for the button that forgets the reader. */
+"ReaderSDK2UI_ReaderSwipeAction_Forget" = "Desvincula";
+
+/* The title for the button that identifies the reader. */
+"ReaderSDK2UI_ReaderSwipeAction_Identify" = "Identifica";
+
+/* The title of the button used to start pairing with nearby Square bluetooth readers. */
+"ReaderSDK2UI_Readers_ConnectReaderButtonTitle" = "Connecta un lector";
+
+/* The title of the table which displays all Square hardware that is currently connected to the device. */
+"ReaderSDK2UI_Readers_HardwareSection" = "Components";
+
+/* The title of the screen that allows the user to manage their connected readers */
+"ReaderSDK2UI_Readers_Title" = "Lectors";
+
