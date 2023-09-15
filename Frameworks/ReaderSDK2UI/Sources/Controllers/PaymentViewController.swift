@@ -33,6 +33,9 @@ public final class PaymentViewController: UIViewController {
     /// the button to charge the customer's card on file will be shown.
     public var cardID: String?
 
+    /// Optional token to identify a payment source id used to charge a House Account.
+    public var houseAccountPaymentSourceId: String?
+
     public init(
         parameters: PaymentParameters,
         paymentManager: PaymentManager,
@@ -84,6 +87,14 @@ public final class PaymentViewController: UIViewController {
         for (index, method) in paymentHandle.alternatePaymentMethods.enumerated() {
             let button = makeButton(with: method, tag: index)
             alternativeMethodStackView.addArrangedSubview(button)
+        }
+    }
+
+    // Handle dismissal via swipe and via tapping cancel button
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let paymentHandle, paymentHandle.isPaymentCancelable {
+            paymentHandle.cancelPayment()
         }
     }
 
@@ -139,7 +150,7 @@ private extension PaymentViewController {
     }
 
     @objc func cancelButtonPressed() {
-        paymentHandle?.cancelPayment()
+        self.dismiss(animated: false)
     }
 
     func makeButton(with alternatePaymentMethod: AlternatePaymentMethod, tag: Int) -> UIButton {
@@ -167,8 +178,24 @@ private extension PaymentViewController {
                 }
 
                 return CardOnFilePaymentSource(cardID: cardID)
+            case .houseAccount:
+                guard let houseAccountPaymentSourceId = houseAccountPaymentSourceId else {
+                    present(
+                        makeAlert(message: ReaderSDK2UIStrings.Pay.noHouseAccountPaymentSourceIdErrorMessage),
+                        animated: true,
+                        completion: nil
+                    )
+
+                    return nil
+                }
+
+                return HouseAccountPaymentSource(paymentSourceId: houseAccountPaymentSourceId)
             case .keyed:
                 return KeyedCardPaymentSource()
+            case .tapToPay:
+                return TapToPayPaymentSource()
+            default:
+                return nil
             }
         }()
 
@@ -177,7 +204,7 @@ private extension PaymentViewController {
         do {
             try method.triggerPayment(with: source)
         } catch {
-            fatalError("Unexpected error occurred: \(error.localizedDescription)")
+            print("Unexpected error occurred: \(error.localizedDescription)")
         }
     }
 

@@ -104,7 +104,7 @@ extension ReaderPairingViewController: ReaderPairingDelegate {
         delegate?.readerPairingViewControllerDidFinish(self)
     }
 
-    public func readerPairingDidFail(withError error: Error) {
+    public func readerPairingDidFailWithError(_ error: Error) {
         delegate?.readerPairingViewController(self, didFailWith: error)
     }
 }

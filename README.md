@@ -15,16 +15,30 @@ source 'https://github.com/square/Specs.git'
 
 use_frameworks!
 
-pod "ReaderSDK2", "~> 2.0.0.alpha15"
+pod "ReaderSDK2", "~> 2.0.0.alpha17"
 
 # Optionally include ReaderSDK2UI if you do not wish to build your own UIViewControllers
-pod "ReaderSDK2UI", "~> 2.0.0.alpha15"
+pod "ReaderSDK2UI", "~> 2.0.0.alpha17"
 
 # Optionally include MockReaderUI if you wish to simulate a physical reader when one is not present.
 # This feature is only available when provided a sandbox application id.
-pod "MockReaderUI", "~> 2.0.0.alpha15", configurations: ['Debug']
+pod "MockReaderUI", "~> 2.0.0.alpha17", configurations: ['Debug']
 ```
 _Note that MockReaderUI framework **requires** that `ReaderSDK2` framework to also be present in podfile_
+
+**⚠️ If you are prompted for your Github credentials while installing the ReaderSDK2UI framework, create and input a [Personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#personal-access-tokens-classic). If you can't use a Personal access token, you can also modify ReaderSDK2UI to be fetched via SSH with the below modifications to your Podfile**.
+
+Modify the source URL:
+
+```
+source 'git@github.com:square/Specs.git' 
+```
+
+And specify the Git URL for ReaderSDK2UI
+
+```
+pod "ReaderSDK2UI", :tag => '2.0.0-alpha17', :git => 'git@github.com:Square-Beta-Testers/reader-sdk-2-ios.git'
+```
 
 #### Add build phase to setup the ReaderSDK2 framework ####
 

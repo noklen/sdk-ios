@@ -22,12 +22,16 @@ final class SettingsViewController: UITableViewController {
 
     private weak var delegate: SettingsViewAndMockReaderUIDelegate?
     private let authorizationManager: AuthorizationManager
+    private let readCardInfoManager: ReadCardInfoManager
+    private let readerManager: ReaderManager
     private lazy var dataSource = TableViewDataSource(theme: theme, tableView: tableView, sections: makeSections())
     private let theme: Theme
 
-    init(theme: Theme, authorizationManager: AuthorizationManager, delegate: SettingsViewAndMockReaderUIDelegate?) {
+    init(theme: Theme, authorizationManager: AuthorizationManager, readCardInfoManager: ReadCardInfoManager, readerManager: ReaderManager, delegate: SettingsViewAndMockReaderUIDelegate?) {
         self.theme = theme
         self.authorizationManager = authorizationManager
+        self.readCardInfoManager = readCardInfoManager
+        self.readerManager = readerManager
         self.delegate = delegate
         super.init(style: .grouped)
         title = Strings.TabBar.settings
@@ -121,6 +125,32 @@ private extension SettingsViewController {
             }()
         )
 
+        let houseAccountSection = Section(
+            title: Strings.Settings.houseAccountSectionTitle,
+            rows: {
+                let paymentSourceTokenRow = Row.input(theme: theme, title: Strings.Settings.paymentSourceIdRowTitle, initialState: Config.HouseAccount.paymentSourceId, onChange: { newValue in
+                    Config.HouseAccount.paymentSourceId = newValue
+                })
+
+                return [paymentSourceTokenRow]
+            }()
+        )
+
+        let cardInfoSection = Section(
+            title: Strings.Settings.cardInfoSectionTitle,
+            rows: {
+                let storeSwipedCardToggleRow = Row.toggle(theme: theme, title: Strings.Settings.storeSwipedCardToggleTitle, initialState: Config.storeSwipedCard) { value in
+                    Config.storeSwipedCard = value
+                }
+
+                let readCardInfoButtonRow = Row.button(theme: theme, title: Strings.Settings.readCardInfoButtonTitle, tapHandler: { [weak self] in
+                    self?.readCardInfoRowPressed()
+                })
+
+                return [storeSwipedCardToggleRow, readCardInfoButtonRow]
+            }()
+        )
+
         let locationSection = Section(
             title: Strings.Settings.locationSectionTitle,
             rows: {
@@ -138,12 +168,39 @@ private extension SettingsViewController {
             }()
         )
 
+        makeTapToPaySection()
+
         return [
             generalSection,
             cardOnFileSection,
+            houseAccountSection,
             sandboxSection,
+            cardInfoSection,
             locationSection,
         ].compactMap { $0 }
+    }
+
+    private func makeTapToPaySection() {
+        guard readerManager.isTapToPayReaderSupported() else { return }
+        readerManager.isTapToPayReaderLinked { [weak self] isLinked, error in
+            guard let self = self else { return }
+            let status = Row.horizontal(
+                theme: self.theme,
+                title: Strings.Settings.tapToPaySectionTitle,
+                description: isLinked ? Strings.Settings.tapToPayLinkedValue : Strings.Settings.tapToPayUnlinkedValue,
+                accessoryType: .disclosureIndicator,
+                tapHandler: { [weak self] in
+                    self?.tapToPayRowPressed(isLinked: isLinked)
+                }
+            )
+            let section = Section(title: Strings.Settings.tapToPaySectionTitle, rows: [status])
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.dataSource.sections.append(section)
+                self.tableView.reloadData()
+                if let error { self.presentAlert(title: "Error", message: error.localizedDescription) }
+            }
+        }
     }
 }
 
@@ -163,6 +220,15 @@ private extension SettingsViewController {
     func paymentOptionsRowPressed() {
         let paymentOptionsChanger = PaymentOptionsViewController(theme: theme, authorizationManager: authorizationManager)
         navigationController?.pushViewController(paymentOptionsChanger, animated: true)
+    }
+
+    func tapToPayRowPressed(isLinked: Bool) {
+        let tapToPayViewController = TapToPayViewController(theme: theme, readerManager: readerManager, isLinked: isLinked)
+        navigationController?.pushViewController(tapToPayViewController, animated: true)
+    }
+
+    func readCardInfoRowPressed() {
+        readCardInfoManager.startReadingCardInfo(withStoreSwipedCard: Config.storeSwipedCard)
     }
 }
 

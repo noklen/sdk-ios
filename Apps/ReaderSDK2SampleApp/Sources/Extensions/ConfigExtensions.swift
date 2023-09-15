@@ -9,6 +9,43 @@
 import ReaderSDK2
 
 extension Config {
+    /// In this sample app, `localSalesID` serves as a unique, hypothetical identifier for a transaction within the business logic of your application.
+    /// It's utilized here to demonstrate how one might manage idempotency. In your actual application, the structure and logic for your business logic ID may vary.
+    /// The use of an idempotency key, alongside a custom ID like this, ensures that even if a transaction is retried, it will not be duplicated.
+    /// If a transaction fails and needs to be retried with the same ID, a new idempotency key is generated, thereby maintaining the integrity of the transaction and preventing inadvertent duplication.
+    static var localSalesID: String = String(UUID().uuidString.prefix(8))
+
+    /// Defines the default parameters with which a payment attempt is initiated. The idempotency key included here serves as a placeholder,
+    /// and it will be substituted with an idempotency key that is specifically tied to your unique business-logic ID. See `OrderEntryViewController`.
+    static var parameters = PaymentParameters(
+        idempotencyKey: UUID().uuidString,
+        amountMoney: Money(amount: 0, currency: .USD)
+    )
+
+    static var storeSwipedCard: Bool = false
+
+    enum CardOnFile {
+        static var cardID: String? {
+            get {
+                return UserDefaults.standard.string(forKey: "ReaderSDK-Sample-CardOnFile-CardID")
+            }
+            set {
+                UserDefaults.standard.set(newValue, forKey: "ReaderSDK-Sample-CardOnFile-CardID")
+            }
+        }
+    }
+
+    enum HouseAccount {
+        static var paymentSourceId: String? {
+            get {
+                return UserDefaults.standard.string(forKey: "ReaderSDK-Sample-HouseAccount-PaymentSourceToken")
+            }
+            set {
+                UserDefaults.standard.set(newValue, forKey: "ReaderSDK-Sample-HouseAccount-PaymentSourceToken")
+            }
+        }
+    }
+
     public static var theme: Theme {
         get {
             var option: Theme.Option {
@@ -33,80 +70,4 @@ extension Config {
             UserDefaults.standard.set(option.rawValue, forKey: "ReaderSDK-Sample-Theme")
         }
     }
-
-    static var parameters = PaymentParameters(amountMoney: Money(amount: 0, currency: .USD))
-
-    enum CardOnFile {
-        static var cardID: String? {
-            get {
-                return UserDefaults.standard.string(forKey: "ReaderSDK-Sample-CardOnFile-CardID")
-            }
-            set {
-                UserDefaults.standard.set(newValue, forKey: "ReaderSDK-Sample-CardOnFile-CardID")
-            }
-        }
-    }
 }
-
-extension Theme {
-    enum Option: String, CustomStringConvertible, CaseIterable, Equatable {
-        case standard = "Standard"
-        case shakeShack = "Burger"
-        case warriors = "Basketball"
-
-        var description: String {
-            return rawValue
-        }
-
-        var theme: Theme {
-            switch self {
-            case .standard:
-                return Theme()
-            case .shakeShack:
-                return Theme(
-                    titleColor: .white,
-                    titleFont: .systemFont(ofSize: 24, weight: .black),
-                    subtitleColor: .white,
-                    subtitleFont: .systemFont(ofSize: 16, weight: .medium),
-                    tintColor: #colorLiteral(red: 0.3843137255, green: 0.6745098039, blue: 0.2078431373, alpha: 1),
-                    backgroundColor: .black,
-                    buttonTextColor: .white,
-                    buttonFont: .systemFont(ofSize: 32, weight: .black),
-                    buttonCornerRadius: 8,
-                    informationIconColor: #colorLiteral(red: 0.3843137255, green: 0.6745098039, blue: 0.2078431373, alpha: 1),
-                    successIconColor: #colorLiteral(red: 0.3843137255, green: 0.6745098039, blue: 0.2078431373, alpha: 1),
-                    errorIconColor: #colorLiteral(red: 0.8431372549, green: 0.1803921569, blue: 0.1960784314, alpha: 1),
-                    cornerRadius: 0,
-                    presentationStyle: .alwaysFullscreen,
-                    inputFieldColor: .black,
-                    inputFieldTextColor: .white,
-                    inputFieldPlaceholderTextColor: .white,
-                    inputFieldErrorColor: #colorLiteral(red: 0.8431372549, green: 0.1803921569, blue: 0.1960784314, alpha: 1)
-                )
-            case .warriors:
-                return Theme(
-                    titleColor: .white,
-                    titleFont: .systemFont(ofSize: 24, weight: .black),
-                    subtitleColor: .white,
-                    subtitleFont: .systemFont(ofSize: 16, weight: .medium),
-                    tintColor: #colorLiteral(red: 1, green: 0.7788988948, blue: 0.1741508245, alpha: 1),
-                    backgroundColor: #colorLiteral(red: 0.1154184118, green: 0.2600637376, blue: 0.5409679413, alpha: 1),
-                    buttonTextColor: .white,
-                    buttonFont: .systemFont(ofSize: 32, weight: .black),
-                    buttonCornerRadius: 8,
-                    informationIconColor: .white,
-                    successIconColor: #colorLiteral(red: 1, green: 0.7788988948, blue: 0.1741508245, alpha: 1),
-                    errorIconColor: #colorLiteral(red: 1, green: 0.7788988948, blue: 0.1741508245, alpha: 1),
-                    cornerRadius: 0,
-                    presentationStyle: .alwaysFullscreen,
-                    inputFieldColor: #colorLiteral(red: 0.1154184118, green: 0.2600637376, blue: 0.5409679413, alpha: 1),
-                    inputFieldTextColor: .white,
-                    inputFieldPlaceholderTextColor: .white,
-                    inputFieldErrorColor: #colorLiteral(red: 1, green: 0.7788988948, blue: 0.1741508245, alpha: 1)
-                )
-            }
-        }
-    }
-}
-
-

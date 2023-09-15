@@ -4,8 +4,11 @@
 /* Error title message that is presented. */
 "ReaderSDK2UI_PayScreen_alertTitle" = "Error Occurred";
 
-/* Error message shown to consumers when they send incorrect payment parmeters. */
+/* Error message shown to consumers when they send incorrect payment parameters. */
 "ReaderSDK2UI_PayScreen_noCardId" = "Attempting to create card on file payment without a value set for cardID.";
+
+/* Error message shown to consumers when they send incorrect payment parameters. */
+"ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId" = "Attempting to create a house account payment without a value set for paymentSourceId.";
 
 /* Okay button presented to confirm the error alert. */
 "ReaderSDK2UI_PayScreen_okayButton" = "Okay";

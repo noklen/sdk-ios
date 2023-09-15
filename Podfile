@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '12.2'
+platform :ios, '14.0'
 
 install! 'cocoapods',
          warn_for_multiple_pod_sources: false,

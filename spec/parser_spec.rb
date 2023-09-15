@@ -15,7 +15,7 @@ describe ReaderSDK2::Parser do
                 parser = ReaderSDK2::Parser.new
                 framework = parser.frameworks[0]
                 source = framework.source(parser)
-                expect(source).to eq({http:"https://reader-sdk-2.s3-us-west-2.amazonaws.com/readersdk2/2.0.0-alpha14/ReaderSDK2_c28e2b6136d.zip"})
+                expect(source).to eq({http:"https://reader-sdk-2.s3-us-west-2.amazonaws.com/readersdk2/2.0.0-alpha17/ReaderSDK2_b9d68e207a0a.zip"})
             end
           end
           context '#closed_source' do
@@ -23,7 +23,7 @@ describe ReaderSDK2::Parser do
                 parser = ReaderSDK2::Parser.new
                 framework = parser.frameworks[1]
                 source = framework.source(parser)
-                expect(source).to eq({http:"https://reader-sdk-2.s3-us-west-2.amazonaws.com/readersdk2/2.0.0-alpha14/MockReaderUI_c28e2b6136d.zip"})
+                expect(source).to eq({http:"https://reader-sdk-2.s3-us-west-2.amazonaws.com/readersdk2/2.0.0-alpha17/MockReaderUI_b9d68e207a0a.zip"})
             end
           end
           context '#open_source' do
@@ -38,7 +38,7 @@ describe ReaderSDK2::Parser do
                 parser = ReaderSDK2::Parser.new
                 framework = parser.frameworks[2]
                 source = framework.source(parser)
-                expect(source).to eq({:git=>"https://github.com/Square-Beta-Testers/reader-sdk-2-ios", :tag=>"2.0.0-alpha14"})
+                expect(source).to eq({:git=>"https://github.com/Square-Beta-Testers/reader-sdk-2-ios", :tag=>"2.0.0-alpha17"})
             end
           end
         end

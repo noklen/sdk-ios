@@ -40,6 +40,7 @@ private extension AppDelegate {
     func makeAppViewController(readerSDK: SDKManager) -> AppViewController {
         return AppViewController(
             authorizationManager: readerSDK.authorizationManager,
+            readCardInfoManager: readerSDK.readCardInfoManager,
             readerManager: readerSDK.readerManager,
             paymentManager: readerSDK.paymentManager
         )

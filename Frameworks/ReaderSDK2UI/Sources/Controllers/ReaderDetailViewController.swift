@@ -116,9 +116,10 @@ private extension ReaderDetailViewController {
     }
 
     private func makeActionRows() -> [Row] {
+        let retriableStates = Set([ReaderState.disconnected, .failedToConnect])
         var result: [Row] = []
 
-        if readerInfo.canRetryConnection {
+        if readerInfo.canRetryConnection && retriableStates.contains(readerInfo.state) {
             let button = Row.button(theme: theme, title: ReaderSDK2UIStrings.ReaderDetail.reconnectReaderButtonTitle, tapHandler: { [weak self] in
                 if let readerInfo = self?.readerInfo {
                     self?.readerManager.retryConnection(readerInfo)

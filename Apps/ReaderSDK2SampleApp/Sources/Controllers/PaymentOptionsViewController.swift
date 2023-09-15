@@ -56,6 +56,9 @@ final class PaymentOptionsViewController: UITableViewController {
 private extension PaymentOptionsViewController {
     func makeSections() -> [Section] {
         let rows: [Row] = [
+            .input(theme: theme, title: "Local Sales ID", initialState: Config.localSalesID, onChange: { newValue in
+                Config.localSalesID = newValue ?? ""
+            }),
             .toggle(theme: theme, title: "Autocomplete", initialState: Config.parameters.autocomplete, onToggle: { newValue in
                 Config.parameters.autocomplete = newValue
             }),

@@ -25,8 +25,11 @@
 /* Error title message that is presented. */
 "ReaderSDK2UI_PayScreen_alertTitle" = "Ocurrió un error";
 
-/* Error message shown to consumers when they send incorrect payment parmeters. */
+/* Error message shown to consumers when they send incorrect payment parameters. */
 "ReaderSDK2UI_PayScreen_noCardId" = "Se está intentando crear un pago con tarjeta guardada sin un valor establecido para cardID.";
+
+/* Error message shown to consumers when they send incorrect payment parameters. */
+"ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId" = "Intento de crear un pago de cuenta nacional sin un valor establecido para paymentSourceId.";
 
 /* Okay button presented to confirm the error alert. */
 "ReaderSDK2UI_PayScreen_okayButton" = "Aceptar";
@@ -62,7 +65,7 @@
 "ReaderSDK2UI_ReaderDetail_SupportedInputMethodsRow" = "Acepta";
 
 /* The instructions for pairing a bluetooth Square reader. */
-"ReaderSDK2UI_ReaderPairing_BluetoothPairingInstructions" = "Mantenga presionado el botón del lector hasta que la luz parpadee de naranja y suelte el botón. Coloque el lector al lado de este dispositivo para emparejarlo.";
+"ReaderSDK2UI_ReaderPairing_BluetoothPairingInstructions" = "Mantén presionado el botón del lector hasta que la luz parpadee de naranja y suelta el botón. Coloca el lector al lado de este dispositivo para emparejarlo.";
 
 /* The title displayed when a bluetooth reader fails to pair. */
 "ReaderSDK2UI_ReaderPairing_ErrorTitle" = "Error al emparejar";

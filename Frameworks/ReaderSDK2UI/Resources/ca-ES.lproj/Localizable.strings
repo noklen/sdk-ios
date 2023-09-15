@@ -5,7 +5,7 @@
 "ReaderSDK2UI_PayScreen_Prompt_Chip" = "Insereix per pagar";
 
 /* The prompt displayed to the user when the only available card input methods are 'chip' and 'contactless'. */
-"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "Insereix o apropa per pagar";
+"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "Insereix o apropa la targeta";
 
 /* The prompt displayed to the user when there are no readers connected. */
 "ReaderSDK2UI_PayScreen_Prompt_NoReadersConnected" = "Cap lector connectat";
@@ -17,7 +17,7 @@
 "ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip" = "Fes lliscar o insereix per pagar";
 
 /* The prompt displayed to the user when the available card input methods are 'swipe', 'chip', and 'contactless'. */
-"ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip_Contactless" = "Per pagar, fes lliscar, insereix o apropa";
+"ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip_Contactless" = "Fes lliscar, insereix o apropa la targeta";
 
 /* The text displayed above the total amount on the Pay screen. */
 "ReaderSDK2UI_PayScreen_TotalAmountHeader" = "TOTAL";
@@ -25,8 +25,11 @@
 /* Error title message that is presented. */
 "ReaderSDK2UI_PayScreen_alertTitle" = "S’ha produït un error";
 
-/* Error message shown to consumers when they send incorrect payment parmeters. */
+/* Error message shown to consumers when they send incorrect payment parameters. */
 "ReaderSDK2UI_PayScreen_noCardId" = "Estàs intentant crear un pagament amb una targeta desada sense abans haver configurat un valor com a identificador de la targeta. ";
+
+/* Error message shown to consumers when they send incorrect payment parameters. */
+"ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId" = "Estàs provant de crear un pagament al compte de client sense haver configurat abans un valor per a l’Identificadord’origendelpagament.";
 
 /* Okay button presented to confirm the error alert. */
 "ReaderSDK2UI_PayScreen_okayButton" = "D’acord";

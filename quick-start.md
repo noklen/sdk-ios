@@ -1,4 +1,4 @@
-# Reader SDK 2.0 (Alpha 15) iOS Quick Start
+# Reader SDK 2.0 (Alpha 17) iOS Quick Start
 
 This guide will show you how to run the Reader SDK 2.0 sample app and take a payment using a Square reader.
 

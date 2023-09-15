@@ -18,15 +18,19 @@ final class LoggedInViewController: UITabBarController {
 
     private let theme: Theme
     private let authorizationManager: AuthorizationManager
+    private let readCardInfoManager: ReadCardInfoManager
     private let readerManager: ReaderManager
     private let paymentManager: PaymentManager
+    private let idempotencyKeyStorage: IdempotencyKeyStorage<String>
     private weak var loggedInViewControllerDelegate: LoggedInViewAndMockReaderUIDelegate?
 
-    init(theme: Theme, authorizationManager: AuthorizationManager, readerManager: ReaderManager, paymentManager: PaymentManager, delegate: LoggedInViewAndMockReaderUIDelegate) {
+    init(theme: Theme, authorizationManager: AuthorizationManager, readCardInfoManager: ReadCardInfoManager, readerManager: ReaderManager, paymentManager: PaymentManager, delegate: LoggedInViewAndMockReaderUIDelegate) {
         self.theme = theme
         self.authorizationManager = authorizationManager
+        self.readCardInfoManager = readCardInfoManager
         self.readerManager = readerManager
         self.paymentManager = paymentManager
+        self.idempotencyKeyStorage = IdempotencyKeyStorage()
 
         self.loggedInViewControllerDelegate = delegate
         super.init(nibName: nil, bundle: nil)
@@ -61,7 +65,7 @@ private extension LoggedInViewController {
     // MARK: - Factories
 
     func makeOrderEntryViewController() -> OrderEntryViewController {
-        let viewController = OrderEntryViewController(theme: theme, authorizationManager: authorizationManager, paymentManager: paymentManager, delegate: self)
+        let viewController = OrderEntryViewController(theme: theme, authorizationManager: authorizationManager, idempotencyKeyStorage: idempotencyKeyStorage, paymentManager: paymentManager, delegate: self)
         let image = UIImage(named: "keypad-tab", in: .r2SampleAppResources, compatibleWith: nil)
         viewController.tabBarItem = UITabBarItem(title: Strings.TabBar.keypad, image: image, selectedImage: nil)
 
@@ -69,7 +73,7 @@ private extension LoggedInViewController {
     }
 
     func makeSettingsViewController() -> UIViewController {
-        let settings = SettingsViewController(theme: theme, authorizationManager: authorizationManager, delegate: self)
+        let settings = SettingsViewController(theme: theme, authorizationManager: authorizationManager, readCardInfoManager: readCardInfoManager, readerManager: readerManager, delegate: self)
         let image = UIImage(named: "settings-tab", in: .r2SampleAppResources, compatibleWith: nil)
         settings.tabBarItem = UITabBarItem(title: Strings.TabBar.settings, image: image, selectedImage: nil)
         return UINavigationController(rootViewController: settings)

@@ -5,7 +5,7 @@
 "ReaderSDK2UI_PayScreen_Prompt_Chip" = "挿入して支払う";
 
 /* The prompt displayed to the user when the only available card input methods are 'chip' and 'contactless'. */
-"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "挿入/タッチしてお支払いを完了します";
+"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "挿入またはタッチで支払う";
 
 /* The prompt displayed to the user when there are no readers connected. */
 "ReaderSDK2UI_PayScreen_Prompt_NoReadersConnected" = "リーダーに接続されていません";
@@ -17,7 +17,7 @@
 "ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip" = "カードを挿入（スワイプ）して支払いを完了する";
 
 /* The prompt displayed to the user when the available card input methods are 'swipe', 'chip', and 'contactless'. */
-"ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip_Contactless" = "挿入/スワイプしてお支払いを完了します";
+"ReaderSDK2UI_PayScreen_Prompt_Swipe_Chip_Contactless" = "スワイプ/挿入/タッチして支払う";
 
 /* The text displayed above the total amount on the Pay screen. */
 "ReaderSDK2UI_PayScreen_TotalAmountHeader" = "合計";
@@ -25,8 +25,11 @@
 /* Error title message that is presented. */
 "ReaderSDK2UI_PayScreen_alertTitle" = "エラーが発生しました";
 
-/* Error message shown to consumers when they send incorrect payment parmeters. */
+/* Error message shown to consumers when they send incorrect payment parameters. */
 "ReaderSDK2UI_PayScreen_noCardId" = "cardIDに値が設定されていないまま、保存済みのカード情報での支払いを作成しようとしています。";
+
+/* Error message shown to consumers when they send incorrect payment parameters. */
+"ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId" = "paymentSourceIdに値が設定されていないまま、ハウスアカウントでの支払いを作成しようとしています。";
 
 /* Okay button presented to confirm the error alert. */
 "ReaderSDK2UI_PayScreen_okayButton" = "OK";

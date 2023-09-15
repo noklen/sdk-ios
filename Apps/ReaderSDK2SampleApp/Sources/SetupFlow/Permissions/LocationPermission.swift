@@ -18,7 +18,7 @@ final class LocationPermission: NSObject, Permission, CLLocationManagerDelegate 
     }
 
     var status: PermissionStatus {
-        switch CLLocationManager.authorizationStatus() {
+        switch locationManager.authorizationStatus {
         case .notDetermined:
             return .notDetermined
         case .authorizedAlways, .authorizedWhenInUse:

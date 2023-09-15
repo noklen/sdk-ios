@@ -22,6 +22,7 @@ protocol MockReaderUIPresentationDelegate: AnyObject {
 final class AppViewController: UIViewController {
     private let theme: Theme = Config.theme
     private let authorizationManager: AuthorizationManager
+    private let readCardInfoManager: ReadCardInfoManager
     private let readerManager: ReaderManager
     private let paymentManager: PaymentManager
 
@@ -39,8 +40,9 @@ final class AppViewController: UIViewController {
     }()
     #endif
 
-    init(authorizationManager: AuthorizationManager, readerManager: ReaderManager, paymentManager: PaymentManager) {
+    init(authorizationManager: AuthorizationManager, readCardInfoManager: ReadCardInfoManager, readerManager: ReaderManager, paymentManager: PaymentManager) {
         self.authorizationManager = authorizationManager
+        self.readCardInfoManager = readCardInfoManager
         self.readerManager = readerManager
         self.paymentManager = paymentManager
 
@@ -57,6 +59,8 @@ final class AppViewController: UIViewController {
         configureDefaultNavigationBarAppearance()
 
         authorizationManager.add(self)
+
+        readCardInfoManager.add(self)
 
         showNextViewController()
     }
@@ -88,11 +92,12 @@ final class AppViewController: UIViewController {
     }
 
     private func showAuthorizationError(_ error: Error) {
-        let alert = UIAlertController(title: Strings.Authorization.errorTitle, message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.Authorization.errorDismissButtonTitle, style: .default, handler: { [weak self] _ in
+        presentAlert(
+            title: Strings.Authorization.errorTitle,
+            message: error.localizedDescription
+        ) { [weak self] _ in
             self?.showStartViewController(transition: .pop)
-        }))
-        present(alert, animated: true)
+        }
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -140,7 +145,14 @@ extension AppViewController {
     }
 
     func showLoggedInViewController(transition style: TransitionStyle = .push) {
-        let viewController = LoggedInViewController(theme: theme, authorizationManager: authorizationManager, readerManager: readerManager, paymentManager: paymentManager, delegate: self)
+        let viewController = LoggedInViewController(
+            theme: theme,
+            authorizationManager: authorizationManager,
+            readCardInfoManager: readCardInfoManager,
+            readerManager: readerManager,
+            paymentManager: paymentManager,
+            delegate: self
+        )
         transition(to: viewController, style: style)
 
         toggleMockReaderUI(enabled: true)
@@ -242,6 +254,27 @@ extension AppViewController: LoggedInViewControllerDelegate {
 extension AppViewController: AuthorizationStateObserver {
     func authorizationStateDidChange(_ authorizationState: AuthorizationState) {
         showNextViewController()
+    }
+}
+
+// MARK: - ReadCardInfoObserver
+extension AppViewController: ReadCardInfoObserver {
+    func readCardInfoDidSucceed(_ handle: CardHandle) {
+        if Config.storeSwipedCard {
+            Config.parameters.cardHandle = handle
+        }
+
+        presentAlert(
+            title: "Read Card Info",
+            message: "\(handle.cardholderName ?? "Unavailable")\n\(handle.brand) \(handle.last4 ?? "")\n\(handle.entryMethod.description)"
+        )
+    }
+
+    func readCardInfoDidFail(_ error: ReadCardInfoError) {
+        presentAlert(
+            title: "Error Reading Card Info",
+            message: "Error Code: \(error.rawValue)"
+        )
     }
 }
 

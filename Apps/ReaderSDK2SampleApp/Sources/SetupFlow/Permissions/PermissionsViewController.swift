@@ -123,9 +123,7 @@ private extension PermissionsViewController {
     func makePermissionViews() -> [PermissionView] {
         var permissions: [Permission] = [MicrophonePermission(), LocationPermission()]
 
-        if #available(iOS 13.1, *) {
-            permissions.append(BluetoothPermission())
-        }
+        permissions.append(BluetoothPermission())
 
         return permissions.map { PermissionView(theme: theme, permission: $0, delegate: self) }
     }

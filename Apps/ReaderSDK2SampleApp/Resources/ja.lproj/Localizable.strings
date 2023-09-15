@@ -58,6 +58,9 @@
 /* The title of the row which displays the cardID to be used for a Card on File payment. */
 "ReaderSDKSample_Settings_CardIDRow" = "カードID";
 
+/* The title of the row which allows a user to start reading card info. */
+"ReaderSDKSample_Settings_CardInfoSection" = "カード情報";
+
 /* The title of the table section which displays card on file settings such as the cardID. */
 "ReaderSDKSample_Settings_CardOnFileSection" = "保存済みカード情報";
 
@@ -66,6 +69,9 @@
 
 /* The title of the table section which displays general settings such as the selected theme. */
 "ReaderSDKSample_Settings_GeneralSection" = "一般";
+
+/* The title of the table section which displays house account settings such as the paymentSourceToken. */
+"ReaderSDKSample_Settings_HouseAccountSection" = "ハウスアカウント";
 
 /* The title of the row which displays the location of the currently authorized Square merchant. */
 "ReaderSDKSample_Settings_LocationRow" = "店舗";
@@ -82,11 +88,38 @@
 /* The title of the screen which allows the user to change the payment options. */
 "ReaderSDKSample_Settings_PaymentOptionsTitle" = "支払いオプション";
 
+/* The title of the row which displays the paymentSourceId to be used for a House Account payment. */
+"ReaderSDKSample_Settings_PaymentSourceIdRow" = "支払い元ID";
+
+/* The title of the button used to start retrieving card details. */
+"ReaderSDKSample_Settings_ReadCardInfoButtonTitle" = "カード情報を読み込む";
+
+/* The title of the button used to allow payment continuations with stored swiped cards. */
+"ReaderSDKSample_Settings_StoreSwipedCardToggleTitle" = "最後にスワイプしたカードを保存する";
+
+/* The title of the button which allows a user to link an account with Tap to Pay. */
+"ReaderSDKSample_Settings_TapToPayLinkAccountRowTitle" = "Tap to Pay on iPhone決済を有効にする";
+
+/* The value of the row when Tap to Pay is linked. */
+"ReaderSDKSample_Settings_TapToPayLinkedValue" = "有効";
+
+/* The title of the button which allows a user to relink a new Apple account with Tap to Pay. */
+"ReaderSDKSample_Settings_TapToPayRelinkAccountRowTitle" = "Tap to Pay on iPhoneを再登録";
+
+/* The title of the table section which displays Tap to Pay settings. */
+"ReaderSDKSample_Settings_TapToPaySection" = "Tap to Pay on iPhone";
+
+/* The value of the row when Tap to Pay is not linked. */
+"ReaderSDKSample_Settings_TapToPayUnlinkedValue" = "無効";
+
 /* The title of the row which displays the selected theme. */
 "ReaderSDKSample_Settings_Theme" = "テーマ";
 
 /* The title of the screen which allows the user to change the current theme. */
 "ReaderSDKSample_Settings_ThemePickerTitle" = "テーマを選択";
+
+/* The title of the alert action to dismiss the alert. */
+"ReaderSDKSample_Settings_dismissAlertTitle" = "閉じる";
 
 /* The title of the login button displayed on the start screen. */
 "ReaderSDKSample_Start_LoginButtonTitle" = "ログイン";

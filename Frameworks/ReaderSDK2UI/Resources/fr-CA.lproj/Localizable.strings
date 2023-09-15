@@ -25,8 +25,11 @@
 /* Error title message that is presented. */
 "ReaderSDK2UI_PayScreen_alertTitle" = "Une erreur s’est produite";
 
-/* Error message shown to consumers when they send incorrect payment parmeters. */
+/* Error message shown to consumers when they send incorrect payment parameters. */
 "ReaderSDK2UI_PayScreen_noCardId" = "Essai de création d’un paiement par carte enregistrée sans valeur définie pour cardID.";
+
+/* Error message shown to consumers when they send incorrect payment parameters. */
+"ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId" = "Essai de création d’un paiement par compte interne sans valeur définie pour paymentSourceId.";
 
 /* Okay button presented to confirm the error alert. */
 "ReaderSDK2UI_PayScreen_okayButton" = "OK";

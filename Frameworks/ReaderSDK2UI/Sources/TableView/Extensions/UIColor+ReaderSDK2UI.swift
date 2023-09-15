@@ -30,13 +30,9 @@ extension UIColor {
             )
         }
 
-        if #available(iOS 13, *) {
-            return UIColor { _ -> UIColor in
-                return dimmedColor()
-            }
+        return UIColor { _ -> UIColor in
+            return dimmedColor()
         }
-
-        return dimmedColor()
     }
 
     func brightened(_ amount: CGFloat = 0.05) -> UIColor {
@@ -49,13 +45,9 @@ extension UIColor {
             )
         }
 
-        if #available(iOS 13, *) {
-            return UIColor { _ -> UIColor in
-                return brightenedColor()
-            }
+        return UIColor { _ -> UIColor in
+            return brightenedColor()
         }
-
-        return brightenedColor()
     }
 
     // MARK: Constructors
@@ -97,4 +89,3 @@ extension UIColor {
         return rgba
     }
 }
-

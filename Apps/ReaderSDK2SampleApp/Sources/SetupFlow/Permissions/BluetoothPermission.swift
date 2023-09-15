@@ -7,7 +7,6 @@
 
 import CoreBluetooth
 
-@available(iOS 13.1, *)
 final class BluetoothPermission: NSObject, Permission {
     private var centralManager: CBCentralManager?
     private var requestPermissionCompletion: (() -> Void)?
@@ -34,7 +33,6 @@ final class BluetoothPermission: NSObject, Permission {
     }
 }
 
-@available(iOS 13.1, *)
 extension BluetoothPermission: CBCentralManagerDelegate {
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -45,7 +43,6 @@ extension BluetoothPermission: CBCentralManagerDelegate {
     }
 }
 
-@available(iOS 13.1, *)
 private extension PermissionStatus {
 
     init(_ bluetoothAuthorization: CBManagerAuthorization) {

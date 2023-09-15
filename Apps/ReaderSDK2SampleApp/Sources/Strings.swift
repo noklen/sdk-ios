@@ -315,6 +315,16 @@ extension Strings {
             )
         }
 
+        static var houseAccountSectionTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_HouseAccountSection",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "House Account",
+                comment: "The title of the table section which displays house account settings such as the paymentSourceToken."
+            )
+        }
+
         static var locationSectionTitle: String {
             return NSLocalizedString(
                 "ReaderSDKSample_Settings_LocationSection",
@@ -342,6 +352,16 @@ extension Strings {
                 bundle: .r2SampleAppResources,
                 value: "Card ID",
                 comment: "The title of the row which displays the cardID to be used for a Card on File payment."
+            )
+        }
+
+        static var paymentSourceIdRowTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_PaymentSourceIdRow",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Payment Source ID",
+                comment: "The title of the row which displays the paymentSourceId to be used for a House Account payment."
             )
         }
 
@@ -402,6 +422,96 @@ extension Strings {
                 bundle: .r2SampleAppResources,
                 value: "Payment Options",
                 comment: "The title of the screen which allows the user to change the payment options."
+            )
+        }
+
+        static var tapToPaySectionTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_TapToPaySection",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Tap to Pay on iPhone",
+                comment: "The title of the table section which displays Tap to Pay settings."
+            )
+        }
+
+        static var tapToPayLinkedValue: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_TapToPayLinkedValue",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Enabled",
+                comment: "The value of the row when Tap to Pay is linked."
+            )
+        }
+
+        static var tapToPayUnlinkedValue: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_TapToPayUnlinkedValue",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Disabled",
+                comment: "The value of the row when Tap to Pay is not linked."
+            )
+        }
+
+        static var tapToPayLinkAccountRowTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_TapToPayLinkAccountRowTitle",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Enable Tap to Pay on iPhone",
+                comment: "The title of the button which allows a user to link an account with Tap to Pay."
+            )
+        }
+
+        static var tapToPayRelinkAccountRowTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_TapToPayRelinkAccountRowTitle",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Relink Tap to Pay on iPhone",
+                comment: "The title of the button which allows a user to relink a new Apple account with Tap to Pay."
+            )
+        }
+
+        static var dismissAlertTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_dismissAlertTitle",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Dismiss",
+                comment: "The title of the alert action to dismiss the alert."
+            )
+        }
+
+        static var cardInfoSectionTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_CardInfoSection",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Card Info",
+                comment: "The title of the row which allows a user to start reading card info."
+            )
+        }
+
+        static var storeSwipedCardToggleTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_StoreSwipedCardToggleTitle",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Store Last Swiped Card",
+                comment: "The title of the button used to allow payment continuations with stored swiped cards."
+            )
+        }
+
+        static var readCardInfoButtonTitle: String {
+            return NSLocalizedString(
+                "ReaderSDKSample_Settings_ReadCardInfoButtonTitle",
+                tableName: nil,
+                bundle: .r2SampleAppResources,
+                value: "Read Card Info",
+                comment: "The title of the button used to start retrieving card details."
             )
         }
     }

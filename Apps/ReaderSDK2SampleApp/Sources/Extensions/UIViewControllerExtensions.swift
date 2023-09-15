@@ -13,4 +13,16 @@ extension UIViewController {
     func isUsingCompactLayout() -> Bool {
         return traitCollection.horizontalSizeClass == .compact
     }
+
+    func presentAlert(title: String, message: String, onDismiss: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: Strings.Settings.dismissAlertTitle, style: .default, handler: onDismiss))
+
+        self.present(alert, animated: true)
+    }
 }

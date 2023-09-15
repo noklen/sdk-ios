@@ -5,7 +5,7 @@
 "ReaderSDK2UI_PayScreen_Prompt_Chip" = "Inserta la tarjeta para pagar\t";
 
 /* The prompt displayed to the user when the only available card input methods are 'chip' and 'contactless'. */
-"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "Inserta la tarjeta o acércala para pagar";
+"ReaderSDK2UI_PayScreen_Prompt_Chip_Contactless" = "Inserta o acerca la tarjeta";
 
 /* The prompt displayed to the user when there are no readers connected. */
 "ReaderSDK2UI_PayScreen_Prompt_NoReadersConnected" = "No hay lectores conectados";
@@ -25,8 +25,11 @@
 /* Error title message that is presented. */
 "ReaderSDK2UI_PayScreen_alertTitle" = "Se ha producido un error";
 
-/* Error message shown to consumers when they send incorrect payment parmeters. */
+/* Error message shown to consumers when they send incorrect payment parameters. */
 "ReaderSDK2UI_PayScreen_noCardId" = "Se intenta crear un pago con tarjeta guardada sin un valor establecido para cardID.";
+
+/* Error message shown to consumers when they send incorrect payment parameters. */
+"ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId" = "Se está intentando crear un pago con cuenta abierta sin un valor establecido para paymentSourceId.";
 
 /* Okay button presented to confirm the error alert. */
 "ReaderSDK2UI_PayScreen_okayButton" = "Aceptar";

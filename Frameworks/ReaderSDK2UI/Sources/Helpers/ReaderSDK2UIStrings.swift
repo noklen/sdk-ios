@@ -325,7 +325,17 @@ extension ReaderSDK2UIStrings {
                 tableName: nil,
                 bundle: .readerSDK2UIResources,
                 value: "Attempting to create card on file payment without a value set for cardID.",
-                comment: "Error message shown to consumers when they send incorrect payment parmeters."
+                comment: "Error message shown to consumers when they send incorrect payment parameters."
+            )
+        }
+
+        static var noHouseAccountPaymentSourceIdErrorMessage: String {
+            return NSLocalizedString(
+                "ReaderSDK2UI_PayScreen_noHouseAccountPaymentSourceId",
+                tableName: nil,
+                bundle: .readerSDK2UIResources,
+                value: "Attempting to create a house account payment without a value set for paymentSourceId.",
+                comment: "Error message shown to consumers when they send incorrect payment parameters."
             )
         }
 
